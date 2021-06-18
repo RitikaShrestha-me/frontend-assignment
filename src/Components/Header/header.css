@@ -1,0 +1,30 @@
+
+
+  .Header{
+    border-bottom: 1px solid gray;
+    display: flex;
+    padding: 3vh;
+    justify-content: space-between;
+  }
+  
+  .invoice-list>h2{
+    font-weight: 500;
+  }
+  
+  .new-btn{
+    background-color: #5cc524;
+    color: white;
+    font-weight: 700;
+    font-size: small;
+    border-radius: 7px;
+    padding: 10px 20px;
+    border: none;
+  }
+  
+  .new-btn:hover{
+    transform: scale(1.02);
+  }
+  
+  .new-btn:active{
+    transform: translateY(2px);
+  }

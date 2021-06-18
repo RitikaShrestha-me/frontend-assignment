@@ -1,0 +1,9 @@
+*{
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+html{
+  max-width: 900px;
+  margin: 0 auto;
+}

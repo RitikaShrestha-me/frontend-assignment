@@ -88,6 +88,9 @@ const NewInvoice = ({ returnInvoice }) => {
     invoice.issueDate = new Date(invoice.issueDate._d).toISOString();
     invoice.amount = totalAmount;
     invoice.status = "draft";
+    if (+new Date(invoice.dueDate) < +new Date()) {
+      invoice.status = "overdue";
+    }
     invoice.note = note;
 
     notification["success"]({

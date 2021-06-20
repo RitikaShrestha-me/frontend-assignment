@@ -8,7 +8,7 @@ const Header = ({ fetchedInvoice }) => {
   };
   return (
     <div className="Header">
-      <h2>Invoices</h2>
+      <h2>Invoice Dashboard</h2>
 
       <NewInvoice returnInvoice={getInvoiceData} />
     </div>

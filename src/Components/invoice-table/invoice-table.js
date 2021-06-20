@@ -17,6 +17,15 @@ const columns = [
     },
   },
   {
+    title: "Due Date",
+    dataIndex: "dueDate",
+    key: "date",
+    sorter: {
+      compare: (a, b) => +new Date(a.dueDate) - +new Date(b.dueDate),
+      multiple: 3,
+    },
+  },
+  {
     title: "Status",
     dataIndex: "status",
     key: "status",
@@ -48,22 +57,25 @@ const columns = [
 ];
 
 const showStatus = (status) => {
-  let color = "yellow";
-  if (status === "draft") {
-    color = "blue";
-  } else if (status === "paid") {
-    color = "green";
-  } else if (status === "overdue") {
-    color = "orange";
+  if (status) {
+    let color = "yellow";
+    if (status === "draft") {
+      color = "blue";
+    } else if (status === "paid") {
+      color = "green";
+    } else if (status === "overdue") {
+      color = "orange";
+    }
+    return (
+      <Tag color={color} key={status}>
+        {status.toUpperCase()}
+      </Tag>
+    );
   }
-  return (
-    <Tag color={color} key={status}>
-      {status.toUpperCase()}
-    </Tag>
-  );
 };
 
 const InvoiceTable = ({ tableData }) => {
+  tableData.sort((a, b) => +new Date(b.issueDate) - +new Date(a.issueDate));
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [invoice, setinvoice] = useState({});
   const dummy = (event) => {
@@ -78,7 +90,7 @@ const InvoiceTable = ({ tableData }) => {
       <Table
         columns={columns}
         dataSource={tableData}
-        pagination={{ defaultPageSize: 5 }}
+        pagination={{ defaultPageSize: 4 }}
         onRow={(record) => {
           return {
             onClick: () => dummy(record), // click row

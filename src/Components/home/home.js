@@ -26,8 +26,8 @@ const Home = ({ data }) => {
     if (value) {
       data.forEach((element) => {
         // console.log(
-          element.invoiceName.toLowerCase().includes(value.toLowerCase())
-        );
+        //   element.invoiceName.toLowerCase().includes(value.toLowerCase())
+        // );
         if (element.invoiceName.toLowerCase().includes(value.toLowerCase())) {
           matchingList.push(element);
         }

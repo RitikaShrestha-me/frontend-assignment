@@ -9,11 +9,11 @@ const { Search } = Input;
 const { Option } = Select;
 
 const Home = ({ data }) => {
-  console.log("data in home:", data);
+  // console.log("data in home:", data);
   const [currentDataLength, setcurrentDataLength] = useState(data.length);
-  console.log("length:", currentDataLength);
+  // console.log("length:", currentDataLength);
   const [displayData, setdisplayData] = useState([...data]);
-  console.log("display data:", displayData);
+  // console.log("display data:", displayData);
   useEffect(() => {
     if (data.length !== currentDataLength) {
       setdisplayData([...data]);
@@ -25,7 +25,7 @@ const Home = ({ data }) => {
     let matchingList = [];
     if (value) {
       data.forEach((element) => {
-        console.log(
+        // console.log(
           element.invoiceName.toLowerCase().includes(value.toLowerCase())
         );
         if (element.invoiceName.toLowerCase().includes(value.toLowerCase())) {
@@ -35,7 +35,7 @@ const Home = ({ data }) => {
     } else {
       matchingList = data;
     }
-    console.log(matchingList);
+    // console.log(matchingList);
     setdisplayData([...matchingList]);
   };
 
@@ -50,7 +50,7 @@ const Home = ({ data }) => {
     } else {
       matchingList = data;
     }
-    console.log(matchingList);
+    // console.log(matchingList);
     setdisplayData([...matchingList]);
   };
 

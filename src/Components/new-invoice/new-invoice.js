@@ -94,15 +94,13 @@ const NewInvoice = ({ returnInvoice }) => {
     invoice.note = note;
 
     notification["success"]({
-      message: "Generating your Invoice.",
+      message: "Generated your Invoice.",
       description:
-        "Invoice will be mailed to the respective customer email id.",
+        "Invoice is generated. You can download the invoice pdf or mail it to the customer.",
     });
     returnInvoice(invoice);
     setinvoice(invoice);
     setpreviewInvoice(true);
-
-    // setIsModalVisible(false);
   };
 
   const handleCancel = () => {
@@ -110,12 +108,12 @@ const NewInvoice = ({ returnInvoice }) => {
   };
 
   const onFinish = (values) => {
-    console.log("Success:", values);
+    // console.log("Success:", values);
     submitInvoice(values);
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    // console.log("Failed:", errorInfo);
     notification["warning"]({
       message: "Please fill all required fields.",
       description:
@@ -138,9 +136,9 @@ const NewInvoice = ({ returnInvoice }) => {
   };
 
   const deleteLineItem = (index) => {
-    console.log("for delete");
+    // console.log("for delete");
     lineItems.splice(index, 1);
-    console.log(lineItems);
+    // console.log(lineItems);
     setLineItems([...lineItems]);
   };
 

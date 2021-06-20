@@ -3,7 +3,7 @@ import NewInvoice from "../new-invoice/new-invoice";
 
 const Header = ({ fetchedInvoice }) => {
   const getInvoiceData = (value) => {
-    console.log("Fetched: ", value);
+    // console.log("Fetched: ", value);
     fetchedInvoice(value);
   };
   return (

@@ -66,10 +66,10 @@ const initData = [
 function App() {
   const [data, setdata] = useState(initData);
   const addGeneratedInvoice = (invoice) => {
-    console.log("App:", invoice);
+    // console.log("App:", invoice);
     data.push({ ...invoice, key: invoice.invoiceId });
     setdata([...data]);
-    console.log("data:", data);
+    // console.log("data:", data);
   };
   return (
     <div className="App">

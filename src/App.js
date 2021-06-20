@@ -58,7 +58,7 @@ const initData = [
     issueDate: new Date("2021-04-19T20:39:03.248Z").toDateString(),
     lineItems: [{ key: 3, name: "item1", quantity: 1, rate: 1, total: 1 }],
     phone: "91888888888",
-    status: "paid",
+    status: "overdue",
     amount: 8000,
   },
 ];

@@ -1,0 +1,46 @@
+.card-status-conatiner {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: rgba(252, 240, 172, 0.5);
+}
+
+.card-stack {
+  display: flex;
+}
+.card {
+  border: 1px solid #3333;
+  border-radius: 6px 6px 0px 0px;
+  width: 200px;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.card-status {
+  background-color: orange;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  width: 200px;
+  margin-top: -2px;
+  padding: 3px;
+  border-radius: 0px 0px 6px 6px;
+}
+
+.no-issue {
+  top: -20px;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.no-issue-text {
+  position: absolute;
+  bottom: -30px;
+  opacity: 0.6;
+}
+
+.amount {
+  font-weight: 500;
+}

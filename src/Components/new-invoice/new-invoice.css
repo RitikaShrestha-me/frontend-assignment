@@ -1,0 +1,25 @@
+.line-item-container{
+    margin-top:10px;
+    background-color: #d3d3d33d;
+    padding:15px
+}
+.additional-info{
+    margin-top:10px;
+    background-color: #d3d3d33d;
+    padding:15px;
+    display:flex;
+    flex-direction: column;
+}
+.line-item-title{
+    background-color: #d3d3d33d;
+    padding:3px 20px;
+    width: 100%;
+}
+.line-item-row{
+    margin-bottom: 10px;
+}
+.footer{
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}

@@ -1,73 +1,117 @@
-import { Table } from "antd";
+import { useState } from "react";
+import { Table, Tag, Modal } from "antd";
+import ReactToPDF from "../react-to-pdf/react-to-pdf";
 
 const columns = [
   {
-    title: "Name",
-    dataIndex: "name",
+    title: "Invoice Name",
+    dataIndex: "invoiceName",
   },
   {
-    title: "Chinese Score",
-    dataIndex: "chinese",
+    title: "Issue Date",
+    dataIndex: "issueDate",
+    key: "date",
     sorter: {
-      compare: (a, b) => a.chinese - b.chinese,
+      compare: (a, b) => +new Date(a.issueDate) - +new Date(b.issueDate),
       multiple: 3,
     },
   },
   {
-    title: "Math Score",
-    dataIndex: "math",
+    title: "Due Date",
+    dataIndex: "dueDate",
+    key: "date",
     sorter: {
-      compare: (a, b) => a.math - b.math,
-      multiple: 2,
+      compare: (a, b) => +new Date(a.dueDate) - +new Date(b.dueDate),
+      multiple: 3,
     },
   },
   {
-    title: "English Score",
-    dataIndex: "english",
+    title: "Status",
+    dataIndex: "status",
+    key: "status",
+    render: (status) => {
+      let color = "yellow";
+      if (status === "draft") {
+        color = "blue";
+      } else if (status === "paid") {
+        color = "green";
+      } else if (status === "overdue") {
+        color = "orange";
+      }
+
+      return (
+        <Tag color={color} key={status}>
+          {status.toUpperCase()}
+        </Tag>
+      );
+    },
+  },
+  {
+    title: "Amount",
+    dataIndex: "amount",
     sorter: {
-      compare: (a, b) => a.english - b.english,
+      compare: (a, b) => a.amount - b.amount,
       multiple: 1,
     },
   },
 ];
 
-const data = [
-  {
-    key: "1",
-    name: "John Brown",
-    chinese: 98,
-    math: 60,
-    english: 70,
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    chinese: 98,
-    math: 66,
-    english: 89,
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    chinese: 98,
-    math: 90,
-    english: 70,
-  },
-  {
-    key: "4",
-    name: "Jim Red",
-    chinese: 88,
-    math: 99,
-    english: 89,
-  },
-];
+const showStatus = (status) => {
+  if (status) {
+    let color = "yellow";
+    if (status === "draft") {
+      color = "blue";
+    } else if (status === "paid") {
+      color = "green";
+    } else if (status === "overdue") {
+      color = "orange";
+    }
+    return (
+      <Tag color={color} key={status}>
+        {status.toUpperCase()}
+      </Tag>
+    );
+  }
+};
 
-function onChange(pagination, filters, sorter, extra) {
-  console.log("params", pagination, filters, sorter, extra);
-}
-
-const InvoiceTable = () => {
-  return <Table columns={columns} dataSource={data} onChange={onChange} />;
+const InvoiceTable = ({ tableData }) => {
+  tableData.sort((a, b) => +new Date(b.issueDate) - +new Date(a.issueDate));
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [invoice, setinvoice] = useState({});
+  const dummy = (event) => {
+    setinvoice(event);
+    setIsModalVisible(true);
+  };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+  return (
+    <div>
+      <Table
+        columns={columns}
+        dataSource={tableData}
+        pagination={{ defaultPageSize: 4 }}
+        onRow={(record) => {
+          return {
+            onClick: () => dummy(record), // click row
+          };
+        }}
+      />
+      <Modal
+        title={"Preview Invoice - " + invoice.invoiceName}
+        visible={isModalVisible}
+        onCancel={handleCancel}
+        width="800px"
+        footer=""
+        style={{ top: "15px" }}
+      >
+        <div style={{ position: "absolute", left: "47.5%" }}>
+          {showStatus(invoice.status)}
+        </div>
+        <ReactToPDF invoiceData={invoice} />
+      </Modal>
+    </div>
+  );
 };
 
 export default InvoiceTable;

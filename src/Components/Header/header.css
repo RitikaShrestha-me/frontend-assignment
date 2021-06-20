@@ -1,10 +1,10 @@
 
 
   .Header{
-    border-bottom: 1px solid gray;
     display: flex;
     padding: 3vh;
     justify-content: space-between;
+    background-color: #e6f7ff;
   }
   
   .invoice-list>h2{
@@ -17,7 +17,8 @@
     font-weight: 700;
     font-size: small;
     border-radius: 7px;
-    padding: 10px 20px;
+    margin: 6px;
+    padding: 6px 18px;
     border: none;
   }
   
@@ -27,4 +28,8 @@
   
   .new-btn:active{
     transform: translateY(2px);
+  }
+
+  .btn-icon{
+    margin-right: 8px;
   }

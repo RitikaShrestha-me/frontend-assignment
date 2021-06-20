@@ -1,10 +1,16 @@
 import "./header.css";
+import NewInvoice from "../new-invoice/new-invoice";
 
-const Header = () => {
+const Header = ({ fetchedInvoice }) => {
+  const getInvoiceData = (value) => {
+    // console.log("Fetched: ", value);
+    fetchedInvoice(value);
+  };
   return (
     <div className="Header">
-      <h2>Invoices</h2>
-      <button className="new-btn">New Invoice</button>
+      <h2>Invoice Dashboard</h2>
+
+      <NewInvoice returnInvoice={getInvoiceData} />
     </div>
   );
 };
